@@ -16,6 +16,7 @@
 			"role": "Developer"
 		}
 	],
+	"minimum-stability": "dev-main",
 	"require": {
 		"php": ">=7.2",
 		"codeigniter4/framework": "^4",
@@ -28,7 +29,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Nfaiz\\DebugToolbar\\": "src/"
+            "Nfaiz\\DebugToolbar\\": "src/"
 		}
 	}
 }
