@@ -21,7 +21,7 @@ Extending default SQL style format for debug toolbar using Highlight.php [https:
 ### 1. Using composer
 Using composer command below will install this package and Highlight.php [[https://github.com/scrivo/highlight.php]
 
-  > composer require nfaiz/ci4-debug-toolbar:dev-main
+  > composer require nfaiz/ci4-debug-toolbar
 
 ### 2. Manually
 
