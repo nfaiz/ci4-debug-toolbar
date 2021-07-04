@@ -45,8 +45,8 @@ By using composer, use the following command:
 
 ## Setup
 When the installation is completed by using composer or manually, edit the following files in **app/Config** directory
-* Events.php *
-* Toolbar.php *
+* Events.php
+* Toolbar.php
 
 ### Events.php
 Find and edit/change **app/Config/Events.php**\
@@ -108,8 +108,8 @@ To change the theme, uncomment **$dbTheme** array and modify the css file value 
 
 
 ### Notes
-* All css theme files can be found at **vendor/scrivo/highlight.php/styles**. *
-* Themes demo: [https://highlightjs.org/static/demo/] *
+* All css theme files can be found at **vendor/scrivo/highlight.php/styles**.
+* Themes demo: [https://highlightjs.org/static/demo/]
 
 
 ## Author's Profile:
