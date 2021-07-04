@@ -135,19 +135,17 @@ class Database extends BaseCollector
 	 */
 	public function display() : string
 	{
-		$data['hlstyle'] = $this::getStyle();
+        $data['hlstyle'] = $this::getStyle();
 
-		foreach (static::$queries as $query)
-		{
-			$data['queries'][] = [
-				'duration' => ($query->getDuration(5) * 1000) . ' ms',
-				'sql'      => $this::highlightSql($query->getQuery()),
-			];
-		}
+        foreach (static::$queries as $query)
+        {
+            $data['queries'][] = [
+                'duration' => ($query->getDuration(5) * 1000) . ' ms',
+                'sql'      => $this::highlightSql($query->getQuery()),
+            ];
+        }
 
-        return Service('parser')
-			->setData($data)
-			->render('Nfaiz\DebugToolbar\Views\database.tpl');
+        return Service('parser')->setData($data)->render('Nfaiz\DebugToolbar\Views\database.tpl');
 
 	}
 
@@ -210,13 +208,13 @@ class Database extends BaseCollector
     private static function getStyle(): string
     {
         if (! class_exists("Highlight\Highlighter")) 
-		{
-			return '';
-		}
+        {
+            return '';
+        }
 
         $ConfigTheme = config(DebugToolbar::class);
 
-		$stylePath = VENDORPATH . join(DIRECTORY_SEPARATOR, ['scrivo/highlight.php', 'styles']);
+        $stylePath = VENDORPATH . join(DIRECTORY_SEPARATOR, ['scrivo/highlight.php', 'styles']);
 
         $style = @file_get_contents(join(DIRECTORY_SEPARATOR, [$stylePath, $ConfigTheme->dbTheme['default']])) ?? '';
         $darkStyle = @file_get_contents(join(DIRECTORY_SEPARATOR, [$stylePath, $ConfigTheme->dbTheme['dark']])) ?? '';
@@ -243,14 +241,14 @@ class Database extends BaseCollector
     private static function highlightSql(string $code = ''): string
     {
         if (! class_exists('Highlight\Highlighter')) 
-		{
-			return $code;
-		}
+        {
+            return $code;
+        }
 
         $highlighter = new \Highlight\Highlighter;
 
         try 
-		{
+        {
             $highlighted = $highlighter->highlight('sql', $code);
             $text = '<code class="hljs hljs-pre-line ' . $highlighted->language . '">';
             $text .= $highlighted->value;
