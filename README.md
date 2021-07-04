@@ -18,9 +18,14 @@ Extending default SQL style format for debug toolbar using Highlight.php [https:
 
 ## Installation
 
-### Manual
+### 1. Using composer
+Using composer command below will install this package and Highlight.php [[https://github.com/scrivo/highlight.php]
 
-#### 1. Download and set autoload
+  > composer require nfaiz/ci4-debug-toolbar:dev-main
+
+### 2. Manually
+
+#### i. Download and set autoload
 Download this repo, extract and rename this folder to **ci4-debug-toolbar**. 
 Enable it by editing **app/Config/Autoload.php** and adding the **Nfaiz\DebugToolbar**
 namespace to the **$psr4** array. For example, if you copied it into **ThirdParty**:
@@ -32,13 +37,18 @@ namespace to the **$psr4** array. For example, if you copied it into **ThirdPart
     ];
 ```
 
-#### 2. Install Highlight.php
-By using composer you may use the following command:
+#### ii. Install Highlight.php
+By using composer, use the following command:
 
   > composer require scrivo/highlight.php
 
 
-### Events
+## Setup
+When the installation is completed by using composer or manually, edit the following files in **app/Config** directory
+* Events.php *
+* Toolbar.php *
+
+### Events.php
 Find and edit/change **app/Config/Events.php**\
 From
 ```php
@@ -51,7 +61,7 @@ Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');
 ```
 
 
-### Toolbar
+### Toolbar.php
 Find and edit/change **app/Config/Toolbar.php**\
 From
 ```php
@@ -67,7 +77,6 @@ use Nfaiz\DebugToolbar\Collectors\Database;
 ## Documentation:
 
 ### Using CSS Highlighter
-
 Create DebugToolbar config file **app\Config\DebugToolbar.php** 
 
 ```php
@@ -94,12 +103,13 @@ class DebugToolbar extends \Nfaiz\DebugToolbar\Config\DebugToolbar
 }
 ```
 
-**$dbTheme** array is commented by default. Default and dark key in **$dbTheme** array are for CI4's toolbar-theme.
-If you want to change the db theme, uncomment **$dbTheme** array and change the value name accordingly.  
+**$dbTheme** array is commented out by default. The default and dark `key` in **$dbTheme** array are for CI4's toolbar-theme. 
+To change the theme, uncomment **$dbTheme** array and modify the css file value accordingly.  
 
-All css theme files can be found at **vendor/scrivo/highlight.php/styles**.
 
-Themes demo: [https://highlightjs.org/static/demo/]
+### Notes
+* All css theme files can be found at **vendor/scrivo/highlight.php/styles**. *
+* Themes demo: [https://highlightjs.org/static/demo/] *
 
 
 ## Author's Profile:
