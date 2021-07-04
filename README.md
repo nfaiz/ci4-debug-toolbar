@@ -39,7 +39,7 @@ By using composer you may use the following command:
 
 
 ### Events
-Find and edit/change **app/Config/Events.php** 
+Find and edit/change **app/Config/Events.php**\
 From
 ```php
 Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
@@ -52,7 +52,7 @@ Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');
 
 
 ### Toolbar
-Find and edit/change **app/Config/Toolbar.php**
+Find and edit/change **app/Config/Toolbar.php**\
 From
 ```php
 use CodeIgniter\Debug\Toolbar\Collectors\Database;
