@@ -16,7 +16,6 @@
 			"role": "Developer"
 		}
 	],
-	"minimum-stability": "dev-main",
 	"require": {
 		"php": ">=7.2",
 		"codeigniter4/framework": "^4",
