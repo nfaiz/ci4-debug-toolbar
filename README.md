@@ -3,8 +3,8 @@
 ![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=nfaiz/ci4-debug-toolbar)
 
 # ci4-debug-toolbar
-SQL highlighter using Highlight.php for CodeIgniter 4 Framework.\
-**NOTE: This lib is a fun project.**
+SQL highlighter using Highlight.php for CodeIgniter 4 Framework.
+
 
 ## Description
 Extending default SQL style format for debug toolbar using Highlight.php [https://github.com/scrivo/highlight.php] to be
@@ -76,8 +76,9 @@ use Nfaiz\DebugToolbar\Collectors\Database;
 
 ## Documentation:
 
-### Using CSS Highlighter
-Create DebugToolbar config file **app\Config\DebugToolbar.php** 
+### How to change the default and dark CodeIgniter 4 database debug toolbar theme?
+Create **app\Config\DebugToolbar.php** config file and extends
+**\Nfaiz\DebugToolbar\Config\DebugToolbar**
 
 ```php
 <?php
@@ -96,19 +97,19 @@ class DebugToolbar extends \Nfaiz\DebugToolbar\Config\DebugToolbar
      * 
      * @var array
      */
-    //public $dbTheme = [
-    //    'default' => 'github.css',
-    //    'dark'    => 'dracula.css'
-    //];
+    public $dbTheme = [
+        'default' => 'github.css',
+        'dark'    => 'dracula.css'
+    ];
 }
 ```
 
-**$dbTheme** array is commented out by default. The default and dark `key` in **$dbTheme** array are for CI4's toolbar-theme. 
-To change the theme, uncomment **$dbTheme** array and modify the css file value accordingly.  
+The default and dark `key` in **$dbTheme** array are for CodeIgniter 4 toolbar-theme. 
+To change the theme, modify the key value accordingly. Please see **NOTES**.
 
 
 ### Notes
-* All css theme files can be found at **vendor/scrivo/highlight.php/styles**.
+* All css themes file can be found at **vendor/scrivo/highlight.php/styles**.
 * Themes demo: [https://highlightjs.org/static/demo/]
 
 
