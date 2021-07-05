@@ -10,8 +10,8 @@ namespace Nfaiz\DebugToolbar\Collectors;
 
 use CodeIgniter\Debug\Toolbar\Collectors\BaseCollector;
 use CodeIgniter\Database\Query;
-
 use Nfaiz\DebugToolbar\Config\DebugToolbar;
+use Highlight\Highlighter;
 
 /**
  * Collector for the Database tab of the Debug Toolbar.
@@ -145,7 +145,9 @@ class Database extends BaseCollector
             ];
         }
 
-        return Service('parser')->setData($data)->render('Nfaiz\DebugToolbar\Views\database.tpl');
+        return Service('parser')
+            ->setData($data)
+            ->render('Nfaiz\DebugToolbar\Views\database.tpl');
 
 	}
 
@@ -212,12 +214,12 @@ class Database extends BaseCollector
             return '';
         }
 
-        $ConfigTheme = config(DebugToolbar::class);
+        $configTheme = config(DebugToolbar::class);
 
-        $stylePath = VENDORPATH . join(DIRECTORY_SEPARATOR, ['scrivo/highlight.php', 'styles']);
+        $stylePath =  join(DIRECTORY_SEPARATOR, [VENDORPATH, 'scrivo', 'highlight.php', 'styles']);
 
-        $style = @file_get_contents(join(DIRECTORY_SEPARATOR, [$stylePath, $ConfigTheme->dbTheme['default']])) ?? '';
-        $darkStyle = @file_get_contents(join(DIRECTORY_SEPARATOR, [$stylePath, $ConfigTheme->dbTheme['dark']])) ?? '';
+        $style = @file_get_contents(join(DIRECTORY_SEPARATOR, [$stylePath, $configTheme->dbTheme['default']])) ?? '';
+        $darkStyle = @file_get_contents(join(DIRECTORY_SEPARATOR, [$stylePath, $configTheme->dbTheme['dark']])) ?? '';
 
         $style .= str_replace('.hljs', '#toolbarContainer.dark .hljs', $darkStyle);
 
@@ -234,28 +236,28 @@ class Database extends BaseCollector
     /**
      * Returns highlighted SQL syntax if Highlight.php exists.
      *
-     * @param string $code
+     * @param string $sql
      *
      * @return string
      */
-    private static function highlightSql(string $code = ''): string
+    private static function highlightSql(string $sql = ''): string
     {
         if (! class_exists('Highlight\Highlighter')) 
         {
-            return $code;
+            return $sql;
         }
 
-        $highlighter = new \Highlight\Highlighter;
+        $highlighter = new Highlighter();
 
         try 
         {
-            $highlighted = $highlighter->highlight('sql', $code);
+            $highlighted = $highlighter->highlight('sql', $sql);
             $text = '<code class="hljs hljs-pre-line ' . $highlighted->language . '">';
             $text .= $highlighted->value;
             $text .= '</code>';
         }
         catch (\DomainException $e) {
-            $text .= '<code>' . $code . '</code>';
+            $text .= '<code>' . $sql . '</code>';
         }
 
         return $text;
