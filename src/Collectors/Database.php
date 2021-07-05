@@ -128,13 +128,13 @@ class Database extends BaseCollector
 
 	//--------------------------------------------------------------------
 
-	/**
-	 * Returns the data of this collector to be formatted in the toolbar
-	 *
-	 * @return string
-	 */
-	public function display() : string
-	{
+    /**
+     * Returns the data of this collector to be formatted in the toolbar
+     *
+     * @return string
+     */
+    public function display() : string
+    {
         $data['hlstyle'] = $this->getStyle();
 
         foreach (static::$queries as $query)
@@ -148,8 +148,7 @@ class Database extends BaseCollector
         return Service('parser')
             ->setData($data)
             ->render('Nfaiz\DebugToolbar\Views\database.tpl');
-
-	}
+    }
 
 	//--------------------------------------------------------------------
 
