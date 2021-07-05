@@ -1,9 +1,12 @@
 <?php
 
 /**
- * @package    Extending Database Collector
- * @author     faiz <noorulfaiz@gmail.com>
- *
+ * This file is extended from CodeIgniter 4 Framework 
+ * 
+ * @author  nfaiz <noorulfaiz@gmail.com>
+ * 
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Nfaiz\DebugToolbar\Collectors;
@@ -126,7 +129,7 @@ class Database extends BaseCollector
         return $data;
     }
 
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
 
     /**
      * Returns the data of this collector to be formatted in the toolbar
@@ -152,7 +155,7 @@ class Database extends BaseCollector
 
 	//--------------------------------------------------------------------
 
-	/**
+    /**
      * Gets the "badge" value for the button.
      *
      * @return int
@@ -187,9 +190,9 @@ class Database extends BaseCollector
         return empty(static::$queries);
     }
 
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
 
-	/**
+    /**
      * Display the icon.
      *
      * Icon from https://icons8.com - 1em package
@@ -201,7 +204,9 @@ class Database extends BaseCollector
         return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADMSURBVEhLY6A3YExLSwsA4nIycQDIDIhRWEBqamo/UNF/SjDQjF6ocZgAKPkRiFeEhoYyQ4WIBiA9QAuWAPEHqBAmgLqgHcolGQD1V4DMgHIxwbCxYD+QBqcKINseKo6eWrBioPrtQBq/BcgY5ht0cUIYbBg2AJKkRxCNWkDQgtFUNJwtABr+F6igE8olGQD114HMgHIxAVDyAhA/AlpSA8RYUwoeXAPVex5qHCbIyMgwBCkAuQJIY00huDBUz/mUlBQDqHGjgBjAwAAACexpph6oHSQAAAAASUVORK5CYII=';
     }
 
-	/**
+    //--------------------------------------------------------------------
+
+    /**
      * Returns highlight.js style if Highlight.php exists.
      *
      * @return string
