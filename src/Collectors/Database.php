@@ -135,13 +135,13 @@ class Database extends BaseCollector
 	 */
 	public function display() : string
 	{
-        $data['hlstyle'] = $this::getStyle();
+        $data['hlstyle'] = $this->getStyle();
 
         foreach (static::$queries as $query)
         {
             $data['queries'][] = [
                 'duration' => ($query->getDuration(5) * 1000) . ' ms',
-                'sql'      => $this::highlightSql($query->getQuery()),
+                'sql'      => $this->highlightSql($query->getQuery()),
             ];
         }
 
@@ -207,7 +207,7 @@ class Database extends BaseCollector
      *
      * @return string
      */
-    private static function getStyle(): string
+    private function getStyle(): string
     {
         if (! class_exists("Highlight\Highlighter")) 
         {
@@ -216,10 +216,10 @@ class Database extends BaseCollector
 
         $configTheme = config(DebugToolbar::class);
 
-        $stylePath =  join(DIRECTORY_SEPARATOR, [VENDORPATH, 'scrivo', 'highlight.php', 'styles']);
+        $stylePath =  VENDORPATH . 'scrivo/highlight.php/styles/';
 
-        $style = @file_get_contents(join(DIRECTORY_SEPARATOR, [$stylePath, $configTheme->dbTheme['default']])) ?? '';
-        $darkStyle = @file_get_contents(join(DIRECTORY_SEPARATOR, [$stylePath, $configTheme->dbTheme['dark']])) ?? '';
+        $style = @file_get_contents($stylePath . $configTheme->dbTheme['default']) ?? '';
+        $darkStyle = @file_get_contents($stylePath . $configTheme->dbTheme['dark']) ?? '';
 
         $style .= str_replace('.hljs', '#toolbarContainer.dark .hljs', $darkStyle);
 
@@ -240,7 +240,7 @@ class Database extends BaseCollector
      *
      * @return string
      */
-    private static function highlightSql(string $sql = ''): string
+    private function highlightSql(string $sql = ''): string
     {
         if (! class_exists('Highlight\Highlighter')) 
         {
