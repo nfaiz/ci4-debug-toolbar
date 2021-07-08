@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This file is extended from CodeIgniter 4 Framework 
+ * This file is not part of the CodeIgniter 4 framework.
  * 
- * @author  nfaiz <noorulfaiz@gmail.com>
+ * @author nfaiz <noorulfaiz@gmail.com>
  * 
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,10 +11,10 @@
 
 namespace Nfaiz\DebugToolbar\Collectors;
 
-use CodeIgniter\Debug\Toolbar\Collectors\BaseCollector;
 use CodeIgniter\Database\Query;
-use Nfaiz\DebugToolbar\Config\DebugToolbar;
+use CodeIgniter\Debug\Toolbar\Collectors\BaseCollector;
 use Highlight\Highlighter;
+use Nfaiz\DebugToolbar\Config\DebugToolbar;
 
 /**
  * Collector for the Database tab of the Debug Toolbar.
@@ -153,7 +153,7 @@ class Database extends BaseCollector
             ->render('Nfaiz\DebugToolbar\Views\database.tpl');
     }
 
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
 
     /**
      * Gets the "badge" value for the button.
@@ -213,11 +213,6 @@ class Database extends BaseCollector
      */
     private function getStyle(): string
     {
-        if (! class_exists("Highlight\Highlighter")) 
-        {
-            return '';
-        }
-
         $configTheme = config(DebugToolbar::class);
 
         $stylePath =  VENDORPATH . 'scrivo/highlight.php/styles/';
@@ -246,11 +241,6 @@ class Database extends BaseCollector
      */
     private function highlightSql(string $sql = ''): string
     {
-        if (! class_exists('Highlight\Highlighter')) 
-        {
-            return $sql;
-        }
-
         $highlighter = new Highlighter();
 
         try 
@@ -266,5 +256,4 @@ class Database extends BaseCollector
 
         return $text;
     }
-
 }
