@@ -25,8 +25,8 @@ Using composer command below will install this package and dependencies.
 ### 2. Manual
 
 #### i. Download and set autoload
-Download this package/repo, extract and rename this folder to **ci4-debug-toolbar**.\ 
-Enable it by editing **app/Config/Autoload.php** and adding the **Nfaiz\DebugToolbar** namespace to the **$psr4** array.\ 
+Download this package/repo, extract and rename this folder to **ci4-debug-toolbar**.
+Enable it by editing **app/Config/Autoload.php** and adding the **Nfaiz\DebugToolbar** namespace to the **$psr4** array. 
 For example, if you copied it into **ThirdParty**:
 ```php
     $psr4 = [
@@ -76,7 +76,7 @@ use Nfaiz\DebugToolbar\Collectors\Database;
 ## Documentation:
 
 ### Change the default display theme.
-With the installation steps above, the package will work out of the box.\ 
+With the installation steps above, the package will work out of the box. 
 To change the default display theme, Create **app\Config\DebugToolbar.php** config file
 
 ```php
