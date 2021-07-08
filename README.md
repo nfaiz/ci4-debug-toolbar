@@ -11,8 +11,8 @@ Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**
 
 
 ## Requirements
-* Codeigniter 4.*
-* Highlight.php ^9.18.*
+* Codeigniter 4.* [https://github.com/codeigniter4/CodeIgniter4]
+* Highlight.php ^9.* [https://github.com/scrivo/highlight.php]
 
 
 ## Installation
@@ -77,7 +77,7 @@ use Nfaiz\DebugToolbar\Collectors\Database;
 
 ### Change the default display theme.
 With the installation steps above, the package will work out of the box. 
-To change the default display theme, Create **app\Config\DebugToolbar.php** config file
+To change the default display theme, create **app\Config\DebugToolbar.php** config file as below
 
 ```php
 <?php
