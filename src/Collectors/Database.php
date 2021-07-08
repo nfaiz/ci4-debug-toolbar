@@ -136,12 +136,11 @@ class Database extends BaseCollector
      *
      * @return string
      */
-    public function display() : string
+    public function display(): string
     {
         $data['hlstyle'] = $this->getStyle();
 
-        foreach (static::$queries as $query)
-        {
+        foreach (static::$queries as $query) {
             $data['queries'][] = [
                 'duration' => ($query->getDuration(5) * 1000) . ' ms',
                 'sql'      => $this->highlightSql($query->getQuery()),
@@ -175,7 +174,7 @@ class Database extends BaseCollector
     public function getTitleDetails(): string
     {
         return '(' . count(static::$queries) . ' Queries across ' . ($countConnection = count($this->connections)) . ' Connection' .
-                ($countConnection > 1 ? 's' : '') . ')';
+            ($countConnection > 1 ? 's' : '') . ')';
     }
 
     //--------------------------------------------------------------------
@@ -207,18 +206,29 @@ class Database extends BaseCollector
     //--------------------------------------------------------------------
 
     /**
-     * Returns highlight.js style if Highlight.php exists.
+     * Returns highlight.js style
      *
      * @return string
      */
     private function getStyle(): string
     {
-        $configTheme = config(DebugToolbar::class);
+        $config = config(DebugToolbar::class);
 
-        $stylePath =  VENDORPATH . 'scrivo/highlight.php/styles/';
+        $defaultfolderPath = VENDORPATH . join(DIRECTORY_SEPARATOR, ['scrivo', 'highlight.php', 'styles']);
 
-        $style = @file_get_contents($stylePath . $configTheme->dbTheme['default']) ?? '';
-        $darkStyle = @file_get_contents($stylePath . $configTheme->dbTheme['dark']) ?? '';
+        if (! isset($config->dbCssFolder)) {
+            $directory = $defaultfolderPath;
+        } else {
+            $directory = is_bool($config->dbCssFolder)
+                ? $defaultfolderPath
+                : ROOTPATH . 'public' . DIRECTORY_SEPARATOR . $config->dbCssFolder;
+        }
+
+        $style = @file_get_contents($directory . DIRECTORY_SEPARATOR . $config->dbCss['default'])
+            ?: file_get_contents($defaultfolderPath  . DIRECTORY_SEPARATOR . 'default.css');
+
+        $darkStyle = @file_get_contents($directory  . DIRECTORY_SEPARATOR . $config->dbCss['dark'])
+            ?: file_get_contents($defaultfolderPath  . DIRECTORY_SEPARATOR . 'dark.css');
 
         $style .= str_replace('.hljs', '#toolbarContainer.dark .hljs', $darkStyle);
 
@@ -233,7 +243,7 @@ class Database extends BaseCollector
     //--------------------------------------------------------------------
 
     /**
-     * Returns highlighted SQL syntax if Highlight.php exists.
+     * Returns highlighted SQL syntax
      *
      * @param string $sql
      *
@@ -243,14 +253,12 @@ class Database extends BaseCollector
     {
         $highlighter = new Highlighter();
 
-        try 
-        {
+        try {
             $highlighted = $highlighter->highlight('sql', $sql);
             $text = '<code class="hljs hljs-pre-line ' . $highlighted->language . '">';
             $text .= $highlighted->value;
             $text .= '</code>';
-        }
-        catch (\DomainException $e) {
+        } catch (\DomainException $e) {
             $text .= '<code>' . $sql . '</code>';
         }
 

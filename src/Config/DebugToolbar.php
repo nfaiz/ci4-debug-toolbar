@@ -8,17 +8,33 @@ class DebugToolbar extends BaseConfig
 {
     /**
      * -------------------------
-     * dbTheme configuration
+     * dbCss
      * -------------------------
      * 
-     * Configuration for default and dark theme using Highlight.php
-     * Css file can be found at <vendorpath/scrivo/highlight.php/styles> directory.
+     * dbCss configurations (default and dark).
+     * List of CSS files are available in VENDORPATH <vendorpath/scrivo/highlight.php/styles> directory.
+     * 
      * 
      * @var array
-     */ 
-    public $dbTheme = [
+     */
+    public $dbCss = [
         'default' => 'default.css',
-        'dark'    => 'dracula.css'
+        'dark'    => 'dark.css'
     ];
 
+    /**
+     * -------------------------
+     * dbCssFolder
+     * -------------------------
+     * 
+     * This will point the folder style path to public folder.
+     * Folder name WITHOUT trailing slash. i.e 'assets/styles'.
+     * Leave it blank (empty string) to use public root folder.
+     * 
+     * 
+     * Default value is false (using VENDORPATH).
+     * 
+     * @var string|bool
+     */
+    public $dbCssFolder = false;
 }
