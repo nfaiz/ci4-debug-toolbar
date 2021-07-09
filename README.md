@@ -20,7 +20,7 @@ Using composer command below will install this library and dependencies.
 
   > composer require nfaiz/ci4-debug-toolbar
 
-For manual installation, refer [here](MANUAL.md#installation).
+For manually/alternative installation method refer [here](MANUAL.md#installation).
 
 
 ## Setup
@@ -28,7 +28,8 @@ Using spark command below will setup all the files.
 
   > php spark debugtoolbar:database
 
-For manual setup, refer [here](MANUAL.md#setup).
+For manually/alternative setup method refer [here](MANUAL.md#setup).
+
 
 ## Usage
 To configure css file and folder path, edit **app\Config\DebugToolbar.php**.
@@ -47,11 +48,11 @@ $dbCss
 ### Folder Path
 $dbCssFolder
 ```php
-    public $dbCssFolder = 'assets/styles';
+    public $dbCssFolder = false;
 ```
 * Set value to `false` to use default vendor path. `'vendor/scrivo/highlight.php/styles'`
-* Set folder **WITHOUT** trailing slash. i.e `'assets/styles'`. 
-* To use public root folder, set value to empty string. `''`.
+* Set folder **WITHOUT** trailing slash. i.e `'assets/styles'`
+* To use public root folder, set value to empty string. `''`
 
 
 ## Notes
