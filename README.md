@@ -3,36 +3,36 @@
 ![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=nfaiz/ci4-debug-toolbar)
 
 # ci4-debug-toolbar
-SQL highlighter using Highlight.php for CodeIgniter 4 Database Debug Toolbar.
+Better SQL syntax highlighter for CodeIgniter 4 Database Debug Toolbar.
 
 
 ## Description
-Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**
+Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**.
 
 
 ## Requirements
-* Codeigniter 4.* [https://github.com/codeigniter4/CodeIgniter4]
-* Highlight.php ^9.* [https://github.com/scrivo/highlight.php]
+* Codeigniter 4 [https://github.com/codeigniter4/CodeIgniter4]
+* Highlight.php [https://github.com/scrivo/highlight.php]
 
 
 ## Installation
-Using composer command below will install this library and dependencies.
+Install the package via composer:
 
   > composer require nfaiz/ci4-debug-toolbar
 
-For manually/alternative installation method refer [here](MANUAL.md#installation).
+Refer [here](docs/MANUAL.md#installation) for manual/alternative installation method.
 
 
 ## Setup
-Using spark command below will setup all the files.
+Setup the library via spark:
 
   > php spark debugtoolbar:database
 
-For manually/alternative setup method refer [here](MANUAL.md#setup).
+Refer [here](docs/MANUAL.md#setup) for manual/alternative setup method.
 
 
 ## Usage
-To configure css file and folder path, edit **app\Config\DebugToolbar.php**.
+Edit **app\Config\DebugToolbar.php** to configure css file and folder path.
 
 ### CSS File
 $dbCss
@@ -43,7 +43,7 @@ $dbCss
     ];
 ```
 * Use css `extension` for css file name. i.e `'github.css'`.
-* Assign `default` and `dark` key value accordingly. See **NOTES**.
+* Assign `default` and `dark` key mode value accordingly. See **Notes**.
 
 ### Folder Path
 $dbCssFolder
