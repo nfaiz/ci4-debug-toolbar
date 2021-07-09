@@ -20,7 +20,7 @@ Using composer command below will install this library and dependencies.
 
   > composer require nfaiz/ci4-debug-toolbar
 
-Refer [here](MANUAL.md#installation) for manual installation.
+For manual installation, refer [here](MANUAL.md#installation).
 
 
 ## Setup
@@ -28,32 +28,30 @@ Using spark command below will setup all the files.
 
   > php spark debugtoolbar:database
 
-Refer [here](MANUAL.md#setup) for manual setup.
+For manual setup, refer [here](MANUAL.md#setup).
 
 ## Usage
-Use **app\Config\DebugToolbar.php** to configure highlighter.
+To configure css file and folder path, edit **app\Config\DebugToolbar.php**.
 
-**CodeIgniter 4** `Debug Toolbar` shipped with 2 styles
-* default
-* dark
-
-### $dbCss
+### CSS File
+$dbCss
 ```php
     public $dbCss = [
         'default' => 'github.css',
         'dark'    => 'dracula.css'
     ];
 ```
-* Use css `extension` for css file name (i.e 'filename.css').
+* Use css `extension` for css file name. i.e `'github.css'`.
 * Assign `default` and `dark` key value accordingly. See **NOTES**.
 
-### $dbCssFolder
+### Folder Path
+$dbCssFolder
 ```php
     public $dbCssFolder = 'assets/styles';
 ```
-* Set value to `false` to use default vendor path `'vendor/scrivo/highlight.php/styles'`
-* Folder must be set WITHOUT trailing slash. i.e `'assets/styles'`. 
-* For public root folder, set the value to empty string. `''`.
+* Set value to `false` to use default vendor path. `'vendor/scrivo/highlight.php/styles'`
+* Set folder **WITHOUT** trailing slash. i.e `'assets/styles'`. 
+* To use public root folder, set value to empty string. `''`.
 
 
 ## Notes
