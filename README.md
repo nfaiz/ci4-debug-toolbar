@@ -51,9 +51,9 @@ Use **app\Config\DebugToolbar.php** to configure highlighter.
 ```php
     public $dbCssFolder = 'assets/styles';
 ```
-* Set value to `false` to use default vendor path ('vendor/scrivo/highlight.php/styles')
-* Folder must be set WITHOUT trailing slash (i.e 'assets/styles'). 
-* For public root folder, set the value to empty string `''`.
+* Set value to `false` to use default vendor path `'vendor/scrivo/highlight.php/styles'`
+* Folder must be set WITHOUT trailing slash. i.e `'assets/styles'`. 
+* For public root folder, set the value to empty string. `''`.
 
 
 ## Notes
