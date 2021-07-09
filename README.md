@@ -38,13 +38,22 @@ Use **app\Config\DebugToolbar.php** to configure highlighter.
 * dark
 
 ### $dbCss
+```php
+    public $dbCss = [
+        'default' => 'github.css',
+        'dark'    => 'dracula.css'
+    ];
+```
 * Use css `extension` for css file name (i.e 'filename.css').
 * Assign `default` and `dark` key value accordingly. See **NOTES**.
 
 ### $dbCssFolder
+```php
+    public $dbCssFolder = 'assets/styles';
+```
+* Set value to `false` to use default vendor path ('vendor/scrivo/highlight.php/styles')
 * Folder must be set WITHOUT trailing slash (i.e 'assets/styles'). 
 * For public root folder, set the value to empty string `''`.
-* Set value to `false` to use default vendor path ('vendor/scrivo/highlight.php/styles')
 
 
 ## Notes
