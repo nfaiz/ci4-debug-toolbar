@@ -29,7 +29,7 @@ Modify these php files
 * [Toolbar](MANUAL.md#toolbar)
 
 Create this php file (optional)
-* [DebugToolbar](README.md#debugtoolbar)
+* [DebugToolbar](MANUAL.md#debugtoolbar)
 
 #### Events
 Modify **app/Config/Events.php**\
