@@ -20,7 +20,7 @@ Using composer command below will install this library and dependencies.
 
   > composer require nfaiz/ci4-debug-toolbar
 
-Please refer [here](MANUAL.md#installation) for manual installation.
+Refer [here](MANUAL.md#installation) for manual installation.
 
 
 ## Setup
@@ -28,7 +28,7 @@ Using spark command below will setup all the files.
 
   > php spark debugtoolbar:database
 
-Please refer [here](MANUAL.md#setup) for manual setup.
+Refer [here](MANUAL.md#setup) for manual setup.
 
 ## Usage
 Themes for default and dark are configurable using **app\Config\DebugToolbar.php**. 
