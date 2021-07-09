@@ -16,122 +16,38 @@ Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**
 
 
 ## Installation
-
-### 1. Using Composer or
-Using composer command below will install this package and dependencies.
+Using composer command below will install this library and dependencies.
 
   > composer require nfaiz/ci4-debug-toolbar
 
-### 2. Manual
-
-#### i. Download and set autoload
-Download this package/repo, extract and rename this folder to **ci4-debug-toolbar**.
-Enable it by editing **app/Config/Autoload.php** and adding the **Nfaiz\DebugToolbar** namespace to the **$psr4** array. 
-For example, if you copied it into **ThirdParty**:
-```php
-    $psr4 = [
-        APP_NAMESPACE => APPPATH, // For custom app namespace
-	    'Config'      => APPPATH . 'Config',
-        'Nfaiz\DebugToolbar' => APPPATH . 'ThirdParty\ci4-debug-toolbar\src',
-    ];
-```
-
-#### ii. Install Highlight.php
-By using composer, use the following command:
-
-  > composer require scrivo/highlight.php
+Please refer [here](MANUAL.md#installation) for manual installation.
 
 
 ## Setup
-When the installation is completed, modify the following files in **app/Config** directory
-* Events.php
-* Toolbar.php
+Using spark command below will setup all the files.
 
-### Events.php
-Modify **app/Config/Events.php**\
-From
-```php
-Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
-```
-To
-```php
-// Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
-Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');
-```
+  > php spark DebugToolbar:database
+
+Please refer [here](MANUAL.md#setup) for manual setup.
+
+## Usage
+Themes for default and dark are configurable using **app\Config\DebugToolbar.php**. 
+
+**CodeIgniter 4** `Debug Toolbar Database` shipped with 2 styles
+* default
+* dark
 
 
-### Toolbar.php
-Modify **app/Config/Toolbar.php**\
-From
-```php
-use CodeIgniter\Debug\Toolbar\Collectors\Database;
-```
-To
-```php
-// use CodeIgniter\Debug\Toolbar\Collectors\Database;
-use Nfaiz\DebugToolbar\Collectors\Database;
-```
+### $dbCss
+* Use css `extension` for css file name (i.e 'filename.css').
+* Assign `default` and `dark` key value accordingly. See **NOTES**.
+
+### $dbCssFolder
+* Folder must be set WITHOUT trailing slash (i.e 'assets/styles'). 
+* For public root folder, set the value to empty string (`''`).
+* Set value to `false` to use default vendor path ('vendor/scrivo/highlight.php/styles')
 
 
-## Documentation:
-
-### Change the default display theme.
-With the installation steps above, the package will work out of the box. 
-To change the default display theme, create **app\Config\DebugToolbar.php** config file as below
-
-```php
-<?php
-
-namespace Config;
-
-class DebugToolbar extends \Nfaiz\DebugToolbar\Config\DebugToolbar
-{
-    /**
-     * -------------------------
-     * dbCss
-     * -------------------------
-     * 
-     * dbCss configurations (default and dark).
-     * List of CSS files are available in VENDORPATH <vendorpath/scrivo/highlight.php/styles> directory.
-     * 
-     * 
-     * @var array
-     */
-    public $dbCss = [
-        'default' => 'default.css',
-        'dark'    => 'dark.css'
-    ];
-
-    /**
-     * -------------------------
-     * dbCssFolder
-     * -------------------------
-     * 
-     * This will point the folder style path to public folder.
-     * Folder name WITHOUT trailing slash. i.e 'assets/styles'.
-     * Leave it blank (empty string) to use public root folder.
-     * 
-     * 
-     * Default value is false (using VENDORPATH).
-     * 
-     * @var string|bool
-     */
-    public $dbCssFolder = false;
-}
-
-```
-
-#### $dbCss
-* Modify `default` and `dark` key value accordingly.
-* Css file is css `name` with css `extension` (.css)
-* See **NOTES**.
-
-#### $dbCssFolder
-* Modify this value to string or boolean false.
-* String format must be set WITHOUT trailing slash. To use public root folder, set to empty string.
-* Set value to `false` to use default path.
-
-
-### Notes
-* All css theme files can be found at **vendor/scrivo/highlight.php/styles**.
+## Notes
+* All css styles for Highlight.php can be found at **vendor/scrivo/highlight.php/styles**.
 * Themes demo: [https://highlightjs.org/static/demo/]

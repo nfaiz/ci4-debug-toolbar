@@ -27,12 +27,12 @@ class DebugToolbar extends BaseConfig
      * dbCssFolder
      * -------------------------
      * 
-     * This will point the folder style path to public folder.
-     * Folder name WITHOUT trailing slash. i.e 'assets/styles'.
+     * String value will set the folder style path to public folder (ROOTPATH/public).
+     * Use folder name WITHOUT trailing slash. i.e 'assets/styles'.
      * Leave it blank (empty string) to use public root folder.
      * 
      * 
-     * Default value is false (using VENDORPATH).
+     * Default value is false (using VENDORPATH <vendorpath/scrivo/highlight.php/styles>).
      * 
      * @var string|bool
      */

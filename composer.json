@@ -3,21 +3,29 @@
     "description": "Extends database debug collector toolbar for CodeIgniter 4 framework",
     "keywords": [
         "codeigniter",
+        "codeigniter4"
         "highlight.php",
         "debug",
-        "toolbar"
+        "toolbar",
+        "database",
+        "css"
     ],
+    "homepage": "https://github.com/nfaiz/ci4-debug-toolbar",
     "license": "MIT",
     "authors": [
         {
             "name": "Noorulfaiz Ateman",
-            "email": "noorulfaiz@gmail.com"
+            "email": "noorulfaiz@gmail.com",
+            "homepage": "http://www.ukm.my/faiz",
+            "role": "System Analyst"
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "codeigniter4/framework": "^4",
+        "php": "^7.3 || ^8.0",
         "scrivo/highlight.php": "^9"
+    },
+    "require-dev": {
+        "codeigniter4/codeigniter4": "^4"
     },
     "autoload": {
         "psr-4": {
