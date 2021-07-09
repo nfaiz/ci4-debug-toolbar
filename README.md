@@ -31,12 +31,11 @@ Using spark command below will setup all the files.
 Refer [here](MANUAL.md#setup) for manual setup.
 
 ## Usage
-Themes for default and dark are configurable using **app\Config\DebugToolbar.php**. 
+Use **app\Config\DebugToolbar.php** to configure highlighter.
 
-**CodeIgniter 4** `Debug Toolbar Database` shipped with 2 styles
+**CodeIgniter 4** `Debug Toolbar` shipped with 2 styles
 * default
 * dark
-
 
 ### $dbCss
 * Use css `extension` for css file name (i.e 'filename.css').
@@ -44,7 +43,7 @@ Themes for default and dark are configurable using **app\Config\DebugToolbar.php
 
 ### $dbCssFolder
 * Folder must be set WITHOUT trailing slash (i.e 'assets/styles'). 
-* For public root folder, set the value to empty string (`''`).
+* For public root folder, set the value to empty string `''`.
 * Set value to `false` to use default vendor path ('vendor/scrivo/highlight.php/styles')
 
 
