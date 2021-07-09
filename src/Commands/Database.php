@@ -20,7 +20,7 @@ class Database extends BaseCommand
      *
      * @var string
      */
-    protected $name = 'DebugToolbar:database';
+    protected $name = 'debugtoolbar:database';
 
     /**
      * The Command's Description
@@ -34,7 +34,7 @@ class Database extends BaseCommand
      *
      * @var string
      */
-    protected $usage = 'DebugToolbar:database';
+    protected $usage = 'debugtoolbar:database';
 
     /**
      * Actually execute a command.

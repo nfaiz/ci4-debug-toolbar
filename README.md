@@ -26,7 +26,7 @@ Please refer [here](MANUAL.md#installation) for manual installation.
 ## Setup
 Using spark command below will setup all the files.
 
-  > php spark DebugToolbar:database
+  > php spark debugtoolbar:database
 
 Please refer [here](MANUAL.md#setup) for manual setup.
 
