@@ -3,7 +3,7 @@
     "description": "Extends database debug collector toolbar for CodeIgniter 4 framework",
     "keywords": [
         "codeigniter",
-        "codeigniter4"
+        "codeigniter4",
         "highlight.php",
         "debug",
         "toolbar",
