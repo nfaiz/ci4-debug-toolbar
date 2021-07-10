@@ -9,7 +9,7 @@ For example, if you copied it into **ThirdParty**:
 ```php
     $psr4 = [
         APP_NAMESPACE => APPPATH, // For custom app namespace
-	    'Config'      => APPPATH . 'Config',
+	'Config'      => APPPATH . 'Config',
         'Nfaiz\DebugToolbar' => APPPATH . 'ThirdParty\ci4-debug-toolbar\src',
     ];
 ```
