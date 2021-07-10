@@ -3,8 +3,6 @@
 /**
  * This file is not part of the CodeIgniter 4 framework.
  * 
- * @author nfaiz <noorulfaiz@gmail.com>
- * 
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -214,21 +212,24 @@ class Database extends BaseCollector
     {
         $config = config(DebugToolbar::class);
 
-        $defaultfolderPath = VENDORPATH . join(DIRECTORY_SEPARATOR, ['scrivo', 'highlight.php', 'styles']);
+        $defaultPath = VENDORPATH . join(DIRECTORY_SEPARATOR, ['scrivo', 'highlight.php', 'styles']);
 
-        if (! isset($config->dbCssFolder)) {
-            $directory = $defaultfolderPath;
-        } else {
-            $directory = is_bool($config->dbCssFolder)
-                ? $defaultfolderPath
-                : ROOTPATH . 'public' . DIRECTORY_SEPARATOR . $config->dbCssFolder;
+        if (! isset($config->dbCssPath)) 
+        {
+            $directory = $defaultPath;
+        } 
+        else
+        {
+            $directory = is_bool($config->dbCssPath)
+                ? $defaultPath
+                : ROOTPATH . 'public' . DIRECTORY_SEPARATOR . $config->dbCssPath;
         }
 
         $style = @file_get_contents($directory . DIRECTORY_SEPARATOR . $config->dbCss['default'])
-            ?: file_get_contents($defaultfolderPath  . DIRECTORY_SEPARATOR . 'default.css');
+            ?: file_get_contents($defaultPath  . DIRECTORY_SEPARATOR . 'default.css');
 
         $darkStyle = @file_get_contents($directory  . DIRECTORY_SEPARATOR . $config->dbCss['dark'])
-            ?: file_get_contents($defaultfolderPath  . DIRECTORY_SEPARATOR . 'dark.css');
+            ?: file_get_contents($defaultPath  . DIRECTORY_SEPARATOR . 'dark.css');
 
         $style .= str_replace('.hljs', '#toolbarContainer.dark .hljs', $darkStyle);
 

@@ -8,78 +8,108 @@ use Config\Autoload;
 
 class Database extends BaseCommand
 {
-    /**
-     * The Command's Group
-     *
-     * @var string
-     */
     protected $group = 'DebugToolbar';
 
-    /**
-     * The Command's Name
-     *
-     * @var string
-     */
     protected $name = 'debugtoolbar:database';
 
-    /**
-     * The Command's Description
-     *
-     * @var string
-     */
-    protected $description = 'Setup Database DebugToolbar.';
+    protected $description = 'Setup/publish Database DebugToolbar.';
 
-    /**
-     * The Command's Usage
-     *
-     * @var string
-     */
     protected $usage = 'debugtoolbar:database';
 
-    /**
-     * Actually execute a command.
-     *
-     * @param array $params
-     */
     public function run(array $params)
     {
         $this->createDebugToolbarConfig();
+
         $this->modifyEventsConfig();
+
         $this->modifyToolbarConfig();
     }
 
-    protected function writeConfigFile(string $path, string $content)
+    protected function writeConfigFile(string $filename, string $content)
     {
-        $filename = $this->getConfiGPath() . $path;
-        $directory = dirname($filename);
+        $file = $this->getAppConfiGPath() . $filename;
+        
+        $directory = dirname($file);
 
         if (! is_dir($directory))
         {
             mkdir($directory, 0777, true);
         }
 
-        if (file_exists($filename))
+        if (file_exists($file))
         {
             $overwrite = (bool) CLI::getOption('f');
 
-            if (! $overwrite && CLI::prompt("File '{$path}' already exists in destination. Overwrite?", ['n', 'y']) === 'n')
+            if (! $overwrite && CLI::prompt("File '{$filename}' already exists in app/Config. Overwrite?", ['n', 'y']) === 'n')
             {
-                CLI::error("Skipped {$path}.");
+                CLI::error("Skipped {$filename}.");
                 return;
             }
         }
 
-        if (write_file($filename, $content))
+        if (write_file($file, $content))
         {
-            CLI::write(CLI::color('Created: ', 'green') . $path);
+            CLI::write(CLI::color('Created: ', 'green') . $filename);
         }
         else
         {
-            CLI::error("Error creating {$path}.");
+            CLI::error("Error creating {$filename}.");
         }
     }
 
     protected function createDebugToolbarConfig()
+    {
+        $filename = 'DebugToolbar.php';
+
+        $content = file_get_contents($this->getConfigPath() . $filename);
+
+        $content = str_replace('namespace Nfaiz\DebugToolbar\Config', "namespace Config", $content);
+
+        $content = str_replace("use CodeIgniter\Config\BaseConfig;".PHP_EOL.PHP_EOL, '', $content);
+
+        $content = str_replace('extends BaseConfig', "extends \Nfaiz\DebugToolbar\Config\DebugToolbar", $content);
+
+        $this->writeConfigFile($filename, $content);
+    }
+
+    protected function modifyEventsConfig()
+    {
+        $filename = 'Events.php';
+
+        $content = file_get_contents($this->getAppConfiGPath() . $filename);
+
+        $content = str_replace(
+            "Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');", 
+            "// Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect') ;".PHP_EOL
+            ."        Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');", 
+            $content);
+
+        $this->writeConfigFile($filename, $content);
+    }
+
+    protected function modifyToolbarConfig()
+    {
+        $filename = 'Toolbar.php';
+
+        $content = file_get_contents($this->getAppConfiGPath() . $filename);
+
+        $content = str_replace(
+            "use CodeIgniter\Debug\Toolbar\Collectors\Database;", 
+            "// use CodeIgniter\Debug\Toolbar\Collectors\Database ;".PHP_EOL
+             ."use Nfaiz\DebugToolbar\Collectors\Database;", 
+            $content);
+
+        $this->writeConfigFile($filename, $content);
+    }
+
+    protected function getAppConfiGPath()
+    {
+        $config = new Autoload();
+
+        return $config->psr4['Config'] . DIRECTORY_SEPARATOR;
+    }
+
+    protected function getConfigPath()
     {
         $sourcePath = realpath(__DIR__ . '/../');
 
@@ -89,50 +119,7 @@ class Database extends BaseCommand
             exit();
         }
 
-        $path = $sourcePath . '/Config/DebugToolbar.php';
-
-        $content = file_get_contents($path);
-        $content = str_replace('namespace Nfaiz\DebugToolbar\Config', "namespace Config", $content);
-        $content = str_replace("use CodeIgniter\Config\BaseConfig;".PHP_EOL.PHP_EOL, '', $content);
-        $content = str_replace('extends BaseConfig', "extends \Nfaiz\DebugToolbar\Config\DebugToolbar", $content);
-
-        $this->writeConfigFile("DebugToolbar.php", $content);
-    }
-
-    protected function modifyEventsConfig()
-    {
-        $filename = $this->getConfiGPath() . 'Events.php';
-
-        $content = file_get_contents($filename);
-
-        $content = str_replace(
-            "Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');", 
-            "// Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect') ! commented".PHP_EOL."        Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');", 
-            $content);
-
-        $this->writeConfigFile("Events.php", $content);
-    }
-
-    protected function modifyToolbarConfig()
-    {
-        $filename = $this->getConfiGPath() . 'Toolbar.php';
-
-        $content = file_get_contents($filename);
-
-        $content = str_replace(
-            "use CodeIgniter\Debug\Toolbar\Collectors\Database;", 
-            "// use CodeIgniter\Debug\Toolbar\Collectors\Database ! commented".PHP_EOL."use Nfaiz\DebugToolbar\Collectors\Database;", 
-            $content);
-
-        $this->writeConfigFile("Toolbar.php", $content);
-    }
-
-    protected function getConfiGPath()
-    {
-        $config = new Autoload();
-
-        return $config->psr4['Config'] . DIRECTORY_SEPARATOR;
+        return $sourcePath . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR;
 
     }
-
 }

@@ -3,7 +3,7 @@
 ![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=nfaiz/ci4-debug-toolbar)
 
 # ci4-debug-toolbar
-Better SQL syntax highlighter for CodeIgniter 4 Database Debug Toolbar.
+SQL syntax highlighter for CodeIgniter 4 Database Debug Toolbar.
 
 
 ## Description
@@ -20,7 +20,7 @@ Install the package via composer:
 
   > composer require nfaiz/ci4-debug-toolbar
 
-Refer [here](docs/MANUAL.md#installation) for manual/alternative installation method.
+Refer [here](docs/MANUAL.md#installation) for manual installation method.
 
 
 ## Setup
@@ -28,7 +28,11 @@ Setup the library via spark:
 
   > php spark debugtoolbar:database
 
-Refer [here](docs/MANUAL.md#setup) for manual/alternative setup method.
+This command will create **app\Config\DebugToolbar.php** config file and;<br /> 
+will try to overwrite content in **app\Config\Events.php** and **app\Config\Toolbar.php**.<br /> 
+Choose overwrite `y` when prompted.
+
+Refer [here](docs/MANUAL.md#setup) for manual setup method.
 
 
 ## Usage
@@ -42,19 +46,19 @@ $dbCss
         'dark'    => 'dracula.css'
     ];
 ```
-* Use css `extension` for css file name. i.e `'github.css'`.
-* Assign `default` and `dark` key mode value accordingly. See **Notes**.
+* Use css `extension` for css file name. i.e `'github.css'`
+* See **Notes**.
 
 ### Folder Path
-$dbCssFolder
+$dbCssPath
 ```php
-    public $dbCssFolder = false;
+    public $dbCssPath = false;
 ```
-* Set value to `false` to use default vendor path. `'vendor/scrivo/highlight.php/styles'`
-* Set folder **WITHOUT** trailing slash. i.e `'assets/styles'`
+* Set value to `false` for default vendor path. `'vendor/scrivo/highlight.php/styles'`
+* Set folder path **without** trailing slash. i.e `'assets/styles'`
 * To use public root folder, set value to empty string. `''`
 
 
 ## Notes
 * All css styles for Highlight.php can be found at **vendor/scrivo/highlight.php/styles**.
-* Themes demo: [https://highlightjs.org/static/demo/]
+* Themes demo: [https://highlightjs.org/static/demo]
