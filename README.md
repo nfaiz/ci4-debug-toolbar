@@ -24,7 +24,7 @@ Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**.
 <img src="https://user-images.githubusercontent.com/1330109/125154946-450d3b00-e18f-11eb-982f-93fcc3d09e06.png" alt="Default mode">
 
 * Dark mode (using dark.css)<br />
-<img src="https://user-images.githubusercontent.com/1330109/125154959-5ce4bf00-e18f-11eb-84f3-2d5f627cfa73.png" alt="Dark mode">
+<img src="https://user-images.githubusercontent.com/1330109/125155349-bf3ebf00-e191-11eb-922f-8b9bd9f12df8.png" alt="Dark mode">
 
 ### Another examples
 
@@ -32,7 +32,7 @@ Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**.
 <img src="https://user-images.githubusercontent.com/1330109/125155187-bb5e6d00-e190-11eb-91a5-b4c2f7da46e4.png" alt="Default mode">
 
 * Dark mode (using atom-one-dark.css)
-<img src="https://user-images.githubusercontent.com/1330109/125155232-f19bec80-e190-11eb-9715-506e819b48f1.png" alt="Dark mode">
+<img src="https://user-images.githubusercontent.com/1330109/125155379-fca34c80-e191-11eb-981f-8fb6e8df9794.png" alt="Dark mode">
 
 
 ## Requirements
