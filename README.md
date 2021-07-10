@@ -10,6 +10,31 @@ SQL syntax highlighter for CodeIgniter 4 Database Debug Toolbar.
 Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**.
 
 
+### Default CodeIgniter 4 Database Debug Toolbar
+
+* Default mode<br />
+<img src="https://user-images.githubusercontent.com/1330109/125154813-894c0b80-e18e-11eb-8bf3-4e6834437ad9.png" alt="Default mode">
+
+* Dark mode<br />
+<img src="https://user-images.githubusercontent.com/1330109/125154888-ef389300-e18e-11eb-88f6-7f066ec09775.png" alt="Dark mode">
+
+### Database Debug Toolbar after using this library
+
+* Default mode (using default.css)<br />
+<img src="https://user-images.githubusercontent.com/1330109/125154946-450d3b00-e18f-11eb-982f-93fcc3d09e06.png" alt="Default mode">
+
+* Dark mode (using dark.css)<br />
+<img src="https://user-images.githubusercontent.com/1330109/125154959-5ce4bf00-e18f-11eb-84f3-2d5f627cfa73.png" alt="Dark mode">
+
+### Another examples
+
+* Default mode (using atom-one-light.css)
+<img src="https://user-images.githubusercontent.com/1330109/125155187-bb5e6d00-e190-11eb-91a5-b4c2f7da46e4.png" alt="Default mode">
+
+* Dark mode (using atom-one-dark.css)
+<img src="https://user-images.githubusercontent.com/1330109/125155232-f19bec80-e190-11eb-9715-506e819b48f1.png" alt="Dark mode">
+
+
 ## Requirements
 * Codeigniter 4 [https://github.com/codeigniter4/CodeIgniter4]
 * Highlight.php [https://github.com/scrivo/highlight.php]
