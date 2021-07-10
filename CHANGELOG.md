@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.1.4](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.1.3...v1.1.4) - 2021-07-10
+
+- Change default css from `dracula.css` to `default.css`
 
 ## [v1.1.3](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.1.2...v1.1.3) - 2021-07-10
 

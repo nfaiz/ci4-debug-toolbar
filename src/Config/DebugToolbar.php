@@ -11,16 +11,17 @@ class DebugToolbar extends BaseConfig
      * dbCss
      * -------------------------
      * 
-     * Database Debug Toolbar CSS styling
+     * Database Debug Toolbar CSS styling file
      * 
      * dbCss configurations (default and dark).
      * List of CSS files are available in VENDORPATH ('vendor/scrivo/highlight.php/styles').
      * 
+     * Set file name WITH css extension. (i.e 'github.css')
      * 
      * @var array
      */
     public $dbCss = [
-        'default' => 'dracula.css',
+        'default' => 'default.css',
         'dark'    => 'dark.css'
     ];
 
