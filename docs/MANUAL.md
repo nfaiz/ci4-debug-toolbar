@@ -98,6 +98,7 @@ class DebugToolbar extends \Nfaiz\DebugToolbar\Config\DebugToolbar
      * 
      * @var string|bool
      */
+     public $dbCssPath = false;
 }
 
 ```
