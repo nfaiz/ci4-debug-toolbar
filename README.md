@@ -85,5 +85,5 @@ $dbCssPath
 
 
 ## Notes
-* All css styles for Highlight.php can be found at **vendor/scrivo/highlight.php/styles**.
+* All css styles for Highlight.php are located at **vendor/scrivo/highlight.php/styles**.
 * Themes demo: [https://highlightjs.org/static/demo]
