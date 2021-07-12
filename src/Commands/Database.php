@@ -65,7 +65,7 @@ class Database extends BaseCommand
 
         $content = str_replace('namespace Nfaiz\DebugToolbar\Config', "namespace Config", $content);
 
-        $content = str_replace("use CodeIgniter\Config\BaseConfig;".PHP_EOL.PHP_EOL, '', $content);
+        $content = str_replace("use CodeIgniter\Config\BaseConfig;" . PHP_EOL . PHP_EOL, '', $content);
 
         $content = str_replace('extends BaseConfig', "extends \Nfaiz\DebugToolbar\Config\DebugToolbar", $content);
 
@@ -80,8 +80,9 @@ class Database extends BaseCommand
 
         $content = str_replace(
             "Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');", 
-            "// Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect') ;".PHP_EOL
-            ."        Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');", 
+            "// Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect') ;" 
+                . PHP_EOL 
+                . "        Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');", 
             $content);
 
         $this->writeConfigFile($filename, $content);
@@ -95,8 +96,9 @@ class Database extends BaseCommand
 
         $content = str_replace(
             "use CodeIgniter\Debug\Toolbar\Collectors\Database;", 
-            "// use CodeIgniter\Debug\Toolbar\Collectors\Database ;".PHP_EOL
-             ."use Nfaiz\DebugToolbar\Collectors\Database;", 
+            "// use CodeIgniter\Debug\Toolbar\Collectors\Database ;" 
+                . PHP_EOL 
+                . "use Nfaiz\DebugToolbar\Collectors\Database;", 
             $content);
 
         $this->writeConfigFile($filename, $content);

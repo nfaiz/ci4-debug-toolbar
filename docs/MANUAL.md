@@ -70,10 +70,10 @@ class DebugToolbar extends \Nfaiz\DebugToolbar\Config\DebugToolbar
      * dbCss
      * -------------------------
      * 
-     * Database Debug Toolbar CSS styling file
+     * CSS styling file
      * 
      * dbCss configurations (default and dark).
-     * List of CSS files are available in VENDORPATH ('vendor/scrivo/highlight.php/styles').
+     * List of CSS files are available in 'vendor/scrivo/highlight.php/styles'.
      * 
      * Set file name WITH css extension. (i.e 'github.css')
      * 
@@ -89,16 +89,17 @@ class DebugToolbar extends \Nfaiz\DebugToolbar\Config\DebugToolbar
      * dbCssPath
      * -------------------------
      * 
-     * Path for Database Debug Toolbar CSS styling.
+     * Folder Path
      * 
      * Default value is false (using 'vendor/scrivo/highlight.php/styles').
      * 
-     * Set value to string (will use 'ROOTPATH/public/').
-     * Set string value WITHOUT trailing slash (i.e 'assets/styles' or '').
+     * Set value to string to use 'ROOTPATH/public/' as path.
+     * String value must be set WITHOUT trailing slash (i.e 'assets/styles' or '').
+     * Change $dbCss accordingly.
      * 
-     * @var string|bool
+     * @var bool|string
      */
-     public $dbCssPath = false;
+    public $dbCssPath = false;
 }
 
 ```

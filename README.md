@@ -45,7 +45,7 @@ Install the package via composer:
 
   > composer require nfaiz/ci4-debug-toolbar
 
-Refer [here](docs/MANUAL.md#installation) for manual installation method.
+Or refer [here](docs/MANUAL.md#installation) for manual installation.
 
 
 ## Setup
@@ -57,7 +57,7 @@ This command will create **app\Config\DebugToolbar.php** config file and;<br />
 will try to overwrite content in **app\Config\Events.php** and **app\Config\Toolbar.php**.<br /> 
 Choose overwrite `y` when prompted.
 
-Refer [here](docs/MANUAL.md#setup) for manual setup method.
+Or refer [here](docs/MANUAL.md#setup) for manual setup.
 
 
 ## Usage
