@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.2.0](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.1.4...v1.2.0) - Not released
+## [v1.2.0](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.1.4...v1.2.0) - 2021-07-15
 
 ### Enhancement
 
