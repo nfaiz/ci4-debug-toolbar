@@ -69,7 +69,7 @@ Find `$sqlCssTheme` property.
     ];
 ```
 * Assign CSS theme name without `.css` extension to `light` or `dark` mode. E.g `'github'`
-* Available CSS themes can be found using [utilities](docs/MANUAL.md#utilities) 
+* Available CSS themes can be found using [utilities](#utilities) 
 
 ### Utilities
 `service('highlighter')`
