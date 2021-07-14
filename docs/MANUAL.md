@@ -1,38 +1,38 @@
-# Manual Installation
+# Manual Installation And Setup
 
 ## Installation
 
-#### Download and set autoload
-Download this library/repo, extract and rename this folder to **ci4-debug-toolbar**.
+### 1. Download and set autoload
+Download this library, extract and rename this folder to **ci4-debug-toolbar**.
 Enable it by editing **app/Config/Autoload.php** and adding the **Nfaiz\DebugToolbar** namespace to the **$psr4** array. 
-For example, if you copied it into **ThirdParty**:
+E.g If this library copied into **ThirdParty**:
 ```php
     $psr4 = [
         APP_NAMESPACE => APPPATH, // For custom app namespace
-	'Config'      => APPPATH . 'Config',
+	    'Config'      => APPPATH . 'Config',
         'Nfaiz\DebugToolbar' => APPPATH . 'ThirdParty\ci4-debug-toolbar\src',
     ];
 ```
 
-#### Install Highlight.php
-By using composer, use the following command:
+### 2. Install Highlight.php
+Install package via composer:
 
-  > composer require scrivo/highlight.php
+    composer require scrivo/highlight.php:^v9.18.*
 
 
 ## Setup
 
-In **app/Config** directory
+In **app/Config** directory<br />
 
-Modify these php files
+Modify these php files.
 * [Events](MANUAL.md#events)
 * [Toolbar](MANUAL.md#toolbar)
 
-Create this php file (optional)
-* [DebugToolbar](MANUAL.md#debugtoolbar)
 
-#### Events
-Modify **app/Config/Events.php**\
+### Events
+
+#### Change database collector namespace
+Modify **app/Config/Events.php**<br />
 From
 ```php
 Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
@@ -43,8 +43,10 @@ To
 Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');
 ```
 
-#### Toolbar
-Modify **app/Config/Toolbar.php**\
+### Toolbar
+Modify **app/Config/Toolbar.php**<br />
+
+#### 1. Change database collector namespace
 From
 ```php
 use CodeIgniter\Debug\Toolbar\Collectors\Database;
@@ -55,51 +57,27 @@ To
 use Nfaiz\DebugToolbar\Collectors\Database;
 ```
 
-#### DebugToolbar
-Create **app\Config\DebugToolbar.php** config file below to change default display theme
-
+#### 2. Add $sqlCssTheme property
 ```php
-<?php
+    public $maxQueries = 100;
 
-namespace Config;
-
-class DebugToolbar extends \Nfaiz\DebugToolbar\Config\DebugToolbar
-{
     /**
-     * -------------------------
-     * dbCss
-     * -------------------------
+     * -------------------------------------------------------------
+     * SQL CSS Theme
+     * -------------------------------------------------------------
      * 
-     * CSS styling file
+     * Configurations for light and dark mode.
+     * Set CSS theme name WITHOUT css extension. E.g 'github'.
      * 
-     * dbCss configurations (default and dark).
-     * List of CSS files are available in 'vendor/scrivo/highlight.php/styles'.
-     * 
-     * Set file name WITH css extension. (i.e 'github.css')
+     * To get available CSS themes in controller use
+     *     service('highlighter')->getAvailableStyleSheets(); 
+     * or to get available CSS theme with absolute path use
+     *     service('highlighter')->getAvailableStyleSheets(true);
      * 
      * @var array
      */
-    public $dbCss = [
-        'default' => 'default.css',
-        'dark'    => 'dark.css'
+    public $sqlCssTheme = [
+        'light' => 'default',
+        'dark'  => 'dark'
     ];
-
-    /**
-     * -------------------------
-     * dbCssPath
-     * -------------------------
-     * 
-     * Folder Path
-     * 
-     * Default value is false (using 'vendor/scrivo/highlight.php/styles').
-     * 
-     * Set value to string to use 'ROOTPATH/public/' as path.
-     * String value must be set WITHOUT trailing slash (i.e 'assets/styles' or '').
-     * Change $dbCss accordingly.
-     * 
-     * @var bool|string
-     */
-    public $dbCssPath = false;
-}
-
 ```

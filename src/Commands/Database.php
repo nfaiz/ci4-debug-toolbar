@@ -18,16 +18,67 @@ class Database extends BaseCommand
 
     public function run(array $params)
     {
-        $this->createDebugToolbarConfig();
-
         $this->modifyEventsConfig();
 
         $this->modifyToolbarConfig();
     }
 
+    protected function modifyEventsConfig()
+    {
+        $filename = 'Events.php';
+
+        $content = file_get_contents($this->getAppConfiGPath($filename));
+
+        $content = str_replace(
+            "Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');", 
+            "// Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect') ;"
+             . PHP_EOL
+             . "        Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');", 
+            $content
+        );
+
+        $this->writeConfigFile($filename, $content);
+    }
+
+    protected function modifyToolbarConfig()
+    {
+        $filename = 'Toolbar.php';
+
+        $content = file_get_contents($this->getAppConfiGPath($filename));
+
+        $content = str_replace(
+            "use CodeIgniter\Debug\Toolbar\Collectors\Database;", 
+            "// use CodeIgniter\Debug\Toolbar\Collectors\Database ;"
+             . PHP_EOL
+             . "use Nfaiz\DebugToolbar\Collectors\Database;", 
+            $content
+        );
+
+        $content = str_replace(
+            service('parser')->render('Nfaiz\DebugToolbar\Views\sqlcsstheme.tpl'), 
+            '}', 
+            $content
+        );
+
+        $content = str_replace(
+            "}", 
+            service('parser')->render('Nfaiz\DebugToolbar\Views\sqlcsstheme.tpl'), 
+            $content
+        );
+
+        $this->writeConfigFile($filename, $content);
+    }
+
+    protected function getAppConfiGPath($filename)
+    {
+        $config = new Autoload();
+
+        return $config->psr4['Config'] . DIRECTORY_SEPARATOR . $filename;
+    }
+
     protected function writeConfigFile(string $filename, string $content)
     {
-        $file = $this->getAppConfiGPath() . $filename;
+        $file = $this->getAppConfiGPath($filename); 
         
         $directory = dirname($file);
 
@@ -55,73 +106,5 @@ class Database extends BaseCommand
         {
             CLI::error("Error creating {$filename}.");
         }
-    }
-
-    protected function createDebugToolbarConfig()
-    {
-        $filename = 'DebugToolbar.php';
-
-        $content = file_get_contents($this->getConfigPath() . $filename);
-
-        $content = str_replace('namespace Nfaiz\DebugToolbar\Config', "namespace Config", $content);
-
-        $content = str_replace("use CodeIgniter\Config\BaseConfig;" . PHP_EOL . PHP_EOL, '', $content);
-
-        $content = str_replace('extends BaseConfig', "extends \Nfaiz\DebugToolbar\Config\DebugToolbar", $content);
-
-        $this->writeConfigFile($filename, $content);
-    }
-
-    protected function modifyEventsConfig()
-    {
-        $filename = 'Events.php';
-
-        $content = file_get_contents($this->getAppConfiGPath() . $filename);
-
-        $content = str_replace(
-            "Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');", 
-            "// Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect') ;" 
-                . PHP_EOL 
-                . "        Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');", 
-            $content);
-
-        $this->writeConfigFile($filename, $content);
-    }
-
-    protected function modifyToolbarConfig()
-    {
-        $filename = 'Toolbar.php';
-
-        $content = file_get_contents($this->getAppConfiGPath() . $filename);
-
-        $content = str_replace(
-            "use CodeIgniter\Debug\Toolbar\Collectors\Database;", 
-            "// use CodeIgniter\Debug\Toolbar\Collectors\Database ;" 
-                . PHP_EOL 
-                . "use Nfaiz\DebugToolbar\Collectors\Database;", 
-            $content);
-
-        $this->writeConfigFile($filename, $content);
-    }
-
-    protected function getAppConfiGPath()
-    {
-        $config = new Autoload();
-
-        return $config->psr4['Config'] . DIRECTORY_SEPARATOR;
-    }
-
-    protected function getConfigPath()
-    {
-        $sourcePath = realpath(__DIR__ . '/../');
-
-        if ($sourcePath == '/' || empty($sourcePath))
-        {
-            CLI::error('Invalid Directory');
-            exit();
-        }
-
-        return $sourcePath . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR;
-
     }
 }

@@ -11,8 +11,6 @@ namespace Nfaiz\DebugToolbar\Collectors;
 
 use CodeIgniter\Database\Query;
 use CodeIgniter\Debug\Toolbar\Collectors\BaseCollector;
-use Highlight\Highlighter;
-use Nfaiz\DebugToolbar\Config\DebugToolbar;
 
 /**
  * Collector for the Database tab of the Debug Toolbar.
@@ -132,22 +130,33 @@ class Database extends BaseCollector
     /**
      * Returns the data of this collector to be formatted in the toolbar
      *
-     * @return string
+     * @return mixed
      */
-    public function display(): string
+    public function display()
     {
-        $data['hlstyle'] = $this->getStyle();
+        if (class_exists('Highlight\Highlighter') 
+            && class_exists('Nfaiz\DebugToolbar\Utilities\Highlighter'))
+        {
+            $hl = service('highlighter');
 
-        foreach (static::$queries as $query) {
-            $data['queries'][] = [
-                'duration' => ($query->getDuration(5) * 1000) . ' ms',
-                'sql'      => $this->highlightSql($query->getQuery()),
-            ];
+            foreach (static::$queries as $query) {
+                $queries[] = [
+                    'duration' => ((float) $query->getDuration(5) * 1000) . ' ms',
+                    'sql'      => $hl->highlightSql($query->getQuery()),
+                ];
+            }
+
+            return $hl->render($queries);
         }
 
-        return Service('parser')
-            ->setData($data)
-            ->render('Nfaiz\DebugToolbar\Views\database.tpl');
+        $data['queries'] = array_map(function (Query $query) {
+            return [
+                'duration' => ((float) $query->getDuration(5) * 1000) . ' ms',
+                'sql'      => '<code><pre>' . $query->debugToolbarDisplay() . '</pre></code>',
+            ];
+        }, static::$queries);
+
+        return $data;
     }
 
     //--------------------------------------------------------------------
@@ -199,70 +208,5 @@ class Database extends BaseCollector
     public function icon(): string
     {
         return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADMSURBVEhLY6A3YExLSwsA4nIycQDIDIhRWEBqamo/UNF/SjDQjF6ocZgAKPkRiFeEhoYyQ4WIBiA9QAuWAPEHqBAmgLqgHcolGQD1V4DMgHIxwbCxYD+QBqcKINseKo6eWrBioPrtQBq/BcgY5ht0cUIYbBg2AJKkRxCNWkDQgtFUNJwtABr+F6igE8olGQD114HMgHIxAVDyAhA/AlpSA8RYUwoeXAPVex5qHCbIyMgwBCkAuQJIY00huDBUz/mUlBQDqHGjgBjAwAAACexpph6oHSQAAAAASUVORK5CYII=';
-    }
-
-    //--------------------------------------------------------------------
-
-    /**
-     * Returns highlight.js style
-     *
-     * @return string
-     */
-    private function getStyle(): string
-    {
-        $config = config(DebugToolbar::class);
-
-        $defaultPath = VENDORPATH . join(DIRECTORY_SEPARATOR, ['scrivo', 'highlight.php', 'styles']);
-
-        if (! isset($config->dbCssPath)) 
-        {
-            $directory = $defaultPath;
-        } 
-        else
-        {
-            $directory = is_bool($config->dbCssPath)
-                ? $defaultPath
-                : ROOTPATH . 'public' . DIRECTORY_SEPARATOR . $config->dbCssPath;
-        }
-
-        $style = @file_get_contents($directory . DIRECTORY_SEPARATOR . $config->dbCss['default'])
-            ?: file_get_contents($defaultPath  . DIRECTORY_SEPARATOR . 'default.css');
-
-        $darkStyle = @file_get_contents($directory  . DIRECTORY_SEPARATOR . $config->dbCss['dark'])
-            ?: file_get_contents($defaultPath  . DIRECTORY_SEPARATOR . 'dark.css');
-
-        $style .= str_replace('.hljs', '#toolbarContainer.dark .hljs', $darkStyle);
-
-        return <<<STYLE
-        <style>
-        .hljs-pre-line{white-space:pre-line;margin-bottom:4px}
-        {$style}
-        </style>
-        STYLE;
-    }
-
-    //--------------------------------------------------------------------
-
-    /**
-     * Returns highlighted SQL syntax
-     *
-     * @param string $sql
-     *
-     * @return string
-     */
-    private function highlightSql(string $sql = ''): string
-    {
-        $highlighter = new Highlighter();
-
-        try {
-            $highlighted = $highlighter->highlight('sql', $sql);
-            $text = '<code class="hljs hljs-pre-line ' . $highlighted->language . '">';
-            $text .= $highlighted->value;
-            $text .= '</code>';
-        } catch (\DomainException $e) {
-            $text .= '<code>' . $sql . '</code>';
-        }
-
-        return $text;
     }
 }
