@@ -25,7 +25,7 @@ Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**.
 * Dark (using dark.css)<br />
 <img src="https://user-images.githubusercontent.com/1330109/125155349-bf3ebf00-e191-11eb-922f-8b9bd9f12df8.png" alt="Dark mode">
 
-See [screenshots](#screenhsots) for another examples.
+See [screenshots](#screenshots) for another examples.
 
 
 ## Requirements
