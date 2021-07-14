@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "scrivo/highlight.php": "^9.18.*"
+        "scrivo/highlight.php": "^9.18"
     },
     "require-dev": {
         "codeigniter4/codeigniter4": "^4"
