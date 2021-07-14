@@ -14,7 +14,7 @@ class Highlighter
      * 
      * @return array
      */
-	public static function getAvailableStyleSheets(bool $filePaths = false): array
+    public static function getAvailableStyleSheets(bool $filePaths = false): array
     {
         return \HighlightUtilities\getAvailableStyleSheets($filePaths);
     }
