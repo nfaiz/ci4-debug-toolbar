@@ -4,7 +4,7 @@ namespace Nfaiz\DebugToolbar\Utilities;
 
 class Highlighter
 {
-	/**
+    /**
      * Returns Available StyleSheets
      * 
      * Set true to return avaiblable CSS absolute paths 
