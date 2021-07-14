@@ -1,15 +1,17 @@
-# Manual Installation And Setup
+# Manual
 
 ## Installation
 
 ### 1. Download and set autoload
 Download this library, extract and rename this folder to **ci4-debug-toolbar**.
-Enable it by editing **app/Config/Autoload.php** and adding the **Nfaiz\DebugToolbar** namespace to the **$psr4** array. 
+Enable it by editing **app/Config/Autoload.php** and adding the **Nfaiz\DebugToolbar** namespace to the **$psr4** array.<br />
+See [namespace](https://www.codeigniter.com/user_guide/general/modules.html#namespaces) for more information.
+
 E.g If this library copied into **ThirdParty**:
 ```php
     $psr4 = [
         APP_NAMESPACE => APPPATH, // For custom app namespace
-	    'Config'      => APPPATH . 'Config',
+        'Config'      => APPPATH . 'Config',
         'Nfaiz\DebugToolbar' => APPPATH . 'ThirdParty\ci4-debug-toolbar\src',
     ];
 ```
@@ -30,9 +32,9 @@ Modify these php files.
 
 
 ### Events
+Modify **app/Config/Events.php**<br />
 
 #### Change database collector namespace
-Modify **app/Config/Events.php**<br />
 From
 ```php
 Events::on('DBQuery', 'CodeIgniter\Debug\Toolbar\Collectors\Database::collect');
