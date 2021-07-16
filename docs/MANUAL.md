@@ -2,12 +2,15 @@
 
 ## Installation
 
+* [Download and set autoload](MANUAL.md#1-Download-and-set-autoload)
+* [Install Highlight.php](MANUAL.md#2-Install-Highlightphp)
+
 ### 1. Download and set autoload
 Download this library, extract and rename this folder to **ci4-debug-toolbar**.
 Enable it by editing **app/Config/Autoload.php** and adding the **Nfaiz\DebugToolbar** namespace to the **$psr4** array.<br />
 See [namespace](https://www.codeigniter.com/user_guide/general/modules.html#namespaces) for more information.
 
-E.g If this library copied into **ThirdParty**:
+E.g Using **app/ThirdParty** directory path:
 ```php
     $psr4 = [
         APP_NAMESPACE => APPPATH, // For custom app namespace
@@ -27,12 +30,12 @@ Install package via composer:
 In **app/Config** directory<br />
 
 Modify these php files.
-* [Events](MANUAL.md#events)
-* [Toolbar](MANUAL.md#toolbar)
+* [Events](MANUAL.md#1-events)
+* [Toolbar](MANUAL.md#2-toolbar)
 
 
-### Events
-Modify **app/Config/Events.php**<br />
+### 1. Events
+**app/Config/Events.php**<br />
 
 #### Change database collector namespace
 From
@@ -45,10 +48,10 @@ To
 Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');
 ```
 
-### Toolbar
-Modify **app/Config/Toolbar.php**<br />
+### 2. Toolbar
+**app/Config/Toolbar.php**<br />
 
-#### 1. Change database collector namespace
+#### i. Change database collector namespace
 From
 ```php
 use CodeIgniter\Debug\Toolbar\Collectors\Database;
@@ -59,7 +62,7 @@ To
 use Nfaiz\DebugToolbar\Collectors\Database;
 ```
 
-#### 2. Add $sqlCssTheme property
+#### ii. Add $sqlCssTheme property
 ```php
     public $maxQueries = 100;
 
