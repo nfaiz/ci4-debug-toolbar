@@ -35,7 +35,7 @@ Modify these php files.
 
 
 ### 1. Events
-**app/Config/Events.php**<br />
+`app/Config/Events.php`<br />
 
 #### Change database collector namespace
 From
@@ -49,7 +49,7 @@ Events::on('DBQuery', 'Nfaiz\DebugToolbar\Collectors\Database::collect');
 ```
 
 ### 2. Toolbar
-**app/Config/Toolbar.php**<br />
+`app/Config/Toolbar.php`<br />
 
 #### i. Change database collector namespace
 From
