@@ -46,7 +46,7 @@ Libary setup can be done via spark:
 
     php spark debugtoolbar:database
 
-This command will try to overwrite some content in **app\Config\Events.php** and **app\Config\Toolbar.php**.<br /> 
+This command will try to overwrite some content in **app/Config/Events.php** and **app/Config/Toolbar.php**.<br /> 
 Choose overwrite (`y`) when prompted.
 
 Or refer [here](docs/MANUAL.md#setup) for manual setup.<br />
@@ -58,7 +58,7 @@ After library installation (via composer) and setup (via spark) are completed, r
 ## Configurations
 
 ### Change CSS Theme.
-Open **app\Config\Toolbar.php**.
+Open **app/Config/Toolbar.php**.
 
 Find `$sqlCssTheme` property.
 
@@ -69,7 +69,7 @@ Find `$sqlCssTheme` property.
     ];
 ```
 * Assign CSS theme name without `.css` extension to `light` or `dark` mode. E.g `'github'`
-* Available CSS themes can be found using [utilities](docs/MANUAL.md#utilities) 
+* Available CSS themes can be found using [utilities](#utilities) 
 
 ### Utilities
 `service('highlighter')`

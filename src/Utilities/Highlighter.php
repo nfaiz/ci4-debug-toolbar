@@ -4,7 +4,7 @@ namespace Nfaiz\DebugToolbar\Utilities;
 
 class Highlighter
 {
-	/**
+    /**
      * Returns Available StyleSheets
      * 
      * Set true to return avaiblable CSS absolute paths 
@@ -14,7 +14,7 @@ class Highlighter
      * 
      * @return array
      */
-	public static function getAvailableStyleSheets(bool $filePaths = false): array
+    public static function getAvailableStyleSheets(bool $filePaths = false): array
     {
         return \HighlightUtilities\getAvailableStyleSheets($filePaths);
     }
