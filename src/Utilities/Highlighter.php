@@ -7,8 +7,7 @@ class Highlighter
     /**
      * Returns Available StyleSheets
      * 
-     * Set true to return avaiblable CSS absolute paths 
-     * Set false to return avaiblable CSS without the `.css` extension.
+     * Set true to return available StyleSheet with paths
      * 
      * @param bool
      * 
@@ -27,7 +26,7 @@ class Highlighter
      */
     public static function getStyleSheetFolder(): string
     {
-    	return \HighlightUtilities\getStyleSheetFolder();
+        return \HighlightUtilities\getStyleSheetFolder();
     }
 
     /**
@@ -37,16 +36,25 @@ class Highlighter
      * 
      * @return mixed
      */
-    public static function getStyleSheetPath(string $name)
+    public static function getStyleSheetPath(string $name): string
     {
         try {
             return \HighlightUtilities\getStyleSheetPath($name);
         }
         catch (\DomainException $e) {
-            return [
-                'Exception' => "There is no stylesheet with by the name of '$name'.",
-                'availableStyleSheets' => \HighlightUtilities\getAvailableStyleSheets()
-            ];
+            return '\DomainException. ' 
+                . $e->getMessage() 
+                . " Use service('highlighter')->getAvailableStyleSheets(); to get available stylesheet.";
+        }
+    }
+
+    public static function getStyleSheet(string $name)
+    {
+        try {
+            return \HighlightUtilities\getStyleSheet($name);
+        }
+        catch (\DomainException $e) {
+            throw new \DomainException($e->getMessage());
         }
     }
 
@@ -80,9 +88,12 @@ class Highlighter
      */
     public function render($queries): string
     {
-        return service('parser')
-            ->setData(['queries' => $queries, 'hlstyle' => $this->getStyle()])
-            ->render('Nfaiz\DebugToolbar\Views\database.tpl');
+        $data = [
+            'queries' => $queries, 
+            'hlstyle' => $this->getStyle()
+        ];
+
+        return service('parser')->setData($data)->render('Nfaiz\DebugToolbar\Views\database.tpl');
     }
 
     /**
@@ -92,7 +103,7 @@ class Highlighter
      */
     private function getStyle(): string
     {
-        $config = config('Toolbar');
+        $config = config(Toolbar::class);
 
         $cssList = $this->getAvailableStyleSheets();
 
@@ -104,9 +115,9 @@ class Highlighter
             ? 'dark' 
             : $config->sqlCssTheme['dark'];
 
-        $style = file_get_contents($this->getStyleSheetPath($light));
+        $style = $this->getStyleSheet($light);
 
-        $darkStyle = file_get_contents($this->getStyleSheetPath($dark));
+        $darkStyle = $this->getStyleSheet($dark);
 
         $style .= str_replace('.hljs', '#toolbarContainer.dark .hljs', $darkStyle);
 
