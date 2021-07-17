@@ -21,10 +21,8 @@
         }
     ],
     "require": {
-        "scrivo/highlight.php": "^9.18"
-    },
-    "require-dev": {
-        "codeigniter4/codeigniter4": "^4"
+        "scrivo/highlight.php": "^9.18",
+        "codeigniter4/framework": "^4"
     },
     "autoload": {
         "psr-4": {
