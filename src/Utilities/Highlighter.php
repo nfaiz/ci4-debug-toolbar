@@ -42,9 +42,9 @@ class Highlighter
             return \HighlightUtilities\getStyleSheetPath($name);
         }
         catch (\DomainException $e) {
-            return '\DomainException. ' 
-                . $e->getMessage() 
-                . " Use service('highlighter')->getAvailableStyleSheets(); to get available stylesheet.";
+            throw new \DomainException(
+                $e->getMessage() . " Use service('highlighter')->getAvailableStyleSheets(); to get available stylesheets."
+            );
         }
     }
 
