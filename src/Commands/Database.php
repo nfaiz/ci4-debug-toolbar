@@ -71,7 +71,7 @@ class Database extends BaseCommand
 
     protected function getAppConfiGPath($filename)
     {
-        $config = new Autoload();
+        $config = config(Autoload::class);
 
         return $config->psr4['Config'] . DIRECTORY_SEPARATOR . $filename;
     }

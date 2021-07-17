@@ -115,11 +115,9 @@ class Highlighter
             ? 'dark' 
             : $config->sqlCssTheme['dark'];
 
-        $style = $this->getStyleSheet($light);
+        $darkStyle = str_replace('.hljs', '#toolbarContainer.dark .hljs', $this->getStyleSheet($dark));
 
-        $darkStyle = $this->getStyleSheet($dark);
-
-        $style .= str_replace('.hljs', '#toolbarContainer.dark .hljs', $darkStyle);
+        $style = $this->getStyleSheet($light) . $darkStyle;
 
         return <<<STYLE
         <style>
