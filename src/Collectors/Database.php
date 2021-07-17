@@ -146,7 +146,7 @@ class Database extends BaseCollector
                 ];
             }
 
-            return $hl->render($queries);
+            return $hl->render($queries ?? '');
         }
 
         $data['queries'] = array_map(function (Query $query) {
