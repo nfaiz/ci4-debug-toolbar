@@ -8,7 +8,7 @@ SQL Syntax Highlighter for CodeIgniter 4 Database Debug Toolbar.
 ## Description
 Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**.<br />
 
-##Table of contents
+## Table of contents
   * [Requirements](Requirement)
   * [Installation](#installation)
   * [Setup](#setup)
