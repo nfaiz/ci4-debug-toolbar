@@ -1,6 +1,7 @@
 # Changelog
 
-## [v1.2.x](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.3...v1.2.x) - Not Released
+
+## [v1.2.4](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.3...v1.2.4) - 2021-07-19
 
 ### Bug Fixed
 - Fix variable type.
