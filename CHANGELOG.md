@@ -2,11 +2,13 @@
 
 ## [v1.2.x](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.3...v1.2.x) - Not Released
 
+### Bug Fixed
+- Fix variable type.
 
 ## [v1.2.3](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.2...v1.2.3) - 2021-07-17
 
 ### Bug Fixed
-- Fix composer
+- Fix composer.
 
 ## [v1.2.2](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.1...v1.2.2) - 2021-07-17
 
