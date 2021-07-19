@@ -1,10 +1,17 @@
 # Changelog
 
+## [v1.2.x](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.3...v1.2.x) - Not Released
+
+
+## [v1.2.3](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.2...v1.2.3) - 2021-07-17
+
+### Bug Fixed
+- Fix composer
+
 ## [v1.2.2](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.1...v1.2.2) - 2021-07-17
 
 ### Bug Fixed
 - Missing return value.
-
 
 ## [v1.2.1](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.0...v1.2.1) - 2021-07-15
 
@@ -19,7 +26,7 @@
 ### Removed
 
 - `$dbCsspath`. Use pre-installed CSS themes only.
-- `app/Config/DebugToolbar`. Use `app/Config/Toolbar.php` instead.
+- `app/Config/DebugToolbar`. Use `app/Config/Toolbar.php` instead for configuration.
 
 ### Changed
 
@@ -60,7 +67,7 @@
 
 ### Enhancement
 
-- Added configuration ability using **app\Config\DebugToolbar.php**
+- New configuration ability using **app\Config\DebugToolbar.php**
 
 
 ## [v1.0.0](https://github.com/nfaiz/ci4-debug-toolbar/releases/tag/v1.0.0) - 2021-07-04
