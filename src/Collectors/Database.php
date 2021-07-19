@@ -131,6 +131,8 @@ class Database extends BaseCollector
         {
             $hl = service('highlighter');
 
+            $queries = [];
+
             foreach (static::$queries as $query) {
                 $queries[] = [
                     'duration' => ((float) $query->getDuration(5) * 1000) . ' ms',
@@ -138,7 +140,7 @@ class Database extends BaseCollector
                 ];
             }
 
-            return $hl->render($queries ?? '');
+            return $hl->render($queries);
         }
 
         $data['queries'] = array_map(function (Query $query) {

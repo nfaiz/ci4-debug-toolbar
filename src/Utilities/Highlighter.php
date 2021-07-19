@@ -9,8 +9,6 @@ class Highlighter
      * 
      * Set true to return available StyleSheet with paths
      * 
-     * @param bool
-     * 
      * @return array
      */
     public static function getAvailableStyleSheets(bool $filePaths = false): array
@@ -20,7 +18,6 @@ class Highlighter
 
     /**
      * Returns StyleSheet Folder
-     * 
      * 
      * @return string
      */
@@ -32,9 +29,7 @@ class Highlighter
     /**
      * Returns StyleSheet Path
      * 
-     * @param string
-     * 
-     * @return mixed
+     * @return string
      */
     public static function getStyleSheetPath(string $name): string
     {
@@ -48,7 +43,12 @@ class Highlighter
         }
     }
 
-    public static function getStyleSheet(string $name)
+    /**
+     * Returns StyleSheet Content
+     * 
+     * @return string
+     */
+    public static function getStyleSheet(string $name): string
     {
         try {
             return \HighlightUtilities\getStyleSheet($name);
@@ -59,9 +59,7 @@ class Highlighter
     }
 
     /**
-     * Returns highlighted SQL syntax.
-     *
-     * @param string $sql
+     * Returns Highlighted SQL
      *
      * @return string
      */
@@ -80,14 +78,17 @@ class Highlighter
     }
 
     /**
-     * Render
-     *
-     * @param string $queries
+     * Renders Syntax
      *
      * @return string
      */
-    public function render($queries): string
+    public function render(array $queries): string
     {
+        if (empty($queries))
+        {
+            return '';
+        }
+
         $data = [
             'queries' => $queries, 
             'hlstyle' => $this->getStyle()
