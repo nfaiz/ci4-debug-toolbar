@@ -28,7 +28,7 @@ Make CodeIgniter 4 Database Debug Toolbar SQL Syntax to be **more readable and t
 
 
 ## Installation
-Install libarry via composer:
+Install library via composer:
 
     composer require nfaiz/ci4-debug-toolbar
 
@@ -36,7 +36,7 @@ Or refer [here](docs/MANUAL.md#installation) for manual installation.
 
 
 ## Setup
-Libary setup can be done via spark:
+Library setup can be done via spark:
 
     php spark debugtoolbar:database
 
