@@ -46,7 +46,7 @@ Choose overwrite [`y`] when prompted.
 Or refer [here](docs/MANUAL.md#setup) for manual setup.<br />
 
 
-After library installation (composer) and setup (spark) are completed, refresh page to see result.
+After library installation (composer) and setup (spark) are completed, refresh page to see result.<br />
 See [usage](#usage) to configure with other pre-installed stylesheet themes.
 
 
