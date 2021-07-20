@@ -6,14 +6,14 @@
 SQL Syntax Highlighter for CodeIgniter 4 Database Debug Toolbar.
 
 ## Description
-Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**.<br />
+Make CodeIgniter 4 Database Debug Toolbar SQL Syntax to be **more readable and themeable**.<br />
 
 ## Table of contents
-  * [Requirements](Requirement)
+  * [Requirement](Requirement)
   * [Installation](#installation)
   * [Setup](#setup)
   * [Usage](#usage)
-    * [Change StyleSheet Theme](#change-stylesheet-theme)
+    * [Change stylesheet](#change-stylesheet)
     * [Utilities](#utilities)
   * [Screenshot](#screenshots)
     * [Default database toolbar](#default-database-toolbar)
@@ -28,7 +28,7 @@ Make CodeIgniter 4 Database Debug Toolbar to be **more readable and themeable**.
 
 
 ## Installation
-Install the package via composer:
+Install libarry via composer:
 
     composer require nfaiz/ci4-debug-toolbar
 
@@ -41,17 +41,18 @@ Libary setup can be done via spark:
     php spark debugtoolbar:database
 
 This command will try to overwrite some content in **app/Config/Events.php** and **app/Config/Toolbar.php**.<br /> 
-Choose overwrite (`y`) when prompted.
+Choose overwrite [`y`] when prompted.
 
 Or refer [here](docs/MANUAL.md#setup) for manual setup.<br />
 
 
-After library installation (via composer) and setup (via spark) are completed, refresh page to see the result.
+After library installation (composer) and setup (spark) are completed, refresh page to see result.
+See [usage](#usage) to configure with other pre-installed stylesheet themes.
 
 
 ## Usage
 
-### Change StyleSheet Theme
+### Change StyleSheet
 Open **app/Config/Toolbar.php**.
 
 Find `$sqlCssTheme` property.
@@ -62,30 +63,31 @@ Find `$sqlCssTheme` property.
         'dark'  => 'dracula'
     ];
 ```
-* Assign StyleSheet theme name without `.css` extension to `light` or `dark` mode. E.g `'github'`
-* Available StyleSheet themes can be found using [utilities](#utilities) 
+* `light` and `dark` are mode options for CodeIghniter 4 debug toolbar.
+* Assign stylesheet name without `.css` extension. E.g `'github'`
+* Available stylesheets can be found using [utilities](#utilities) 
 
 ### Utilities
 `service('highlighter')`
 
 Available method/function:
-* `getAvailableStyleSheets(bool: false)` to get available StyleSheet themes.
-* `getStyleSheetPath(string: styleSheetsName)` to get specific StyleSheet theme path.
+* `getAvailableStyleSheets(bool: false)` to get available stylesheets.
+* `getStyleSheetPath(string: styleSheetName)` to get specific stylesheet path.
 
 E.g In **Controller**
 
 ```php
-    // Get available stylesheets themes.
-    $cssList = service('highlighter')->getAvailableStyleSheets();
-    d($cssList);
+    // Get available stylesheets.
+    $list = service('highlighter')->getAvailableStyleSheets();
+    d($list);
 
-    // Set true to get available stylesheets themes with absolute path.
-    $cssListPath = service('highlighter')->getAvailableStyleSheets(true);
-    d($cssListPath);
+    // Set true to get available stylesheets with absolute path.
+    $listPath = service('highlighter')->getAvailableStyleSheets(true);
+    d($listPath);
 
-    // Get specific stylesheet theme path.
-    $csspath = service('highlighter')->getStyleSheetPath('github');
-    d($csspath);
+    // Get specific stylesheet path.
+    $path = service('highlighter')->getStyleSheetPath('github');
+    d($path);
 ```
 
 ## Screenshot
@@ -116,4 +118,3 @@ E.g In **Controller**
 
 ## Credit
 Inspired by this [pull request](https://github.com/codeigniter4/CodeIgniter4/pull/3515)
-
