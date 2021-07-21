@@ -129,7 +129,7 @@ class Database extends BaseCollector
         if (class_exists('Highlight\Highlighter') 
             && class_exists('Nfaiz\DebugToolbar\Utilities\Highlighter'))
         {
-            $hl = service('highlighter');
+            $hl = new \Nfaiz\DebugToolbar\Database();
 
             $queries = [];
 

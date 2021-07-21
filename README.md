@@ -68,25 +68,22 @@ Find `$sqlCssTheme` property.
 * Available stylesheets can be found using [utilities](#utilities) 
 
 ### Utilities
-`service('highlighter')`
-
-Available method/function:
-* `getAvailableStyleSheets(bool: false)` to get available stylesheets.
-* `getStyleSheetPath(string: styleSheetName)` to get specific stylesheet path.
+Use HighlightUtilities function from Highlight.php. <br />
+Please see [highlighter-utilities](https://github.com/scrivo/highlight.php#highlighter-utilities) for more information.
 
 E.g In **Controller**
 
 ```php
     // Get available stylesheets.
-    $list = service('highlighter')->getAvailableStyleSheets();
+    $list = \HighlightUtilities\getAvailableStyleSheets();
     d($list);
 
     // Set true to get available stylesheets with absolute path.
-    $listPath = service('highlighter')->getAvailableStyleSheets(true);
+    $listPath = \HighlightUtilities\getAvailableStyleSheets(true);
     d($listPath);
 
     // Get specific stylesheet path.
-    $path = service('highlighter')->getStyleSheetPath('github');
+    $path = \HighlightUtilities\getStyleSheetPath('github');
     d($path);
 ```
 
@@ -117,4 +114,5 @@ E.g In **Controller**
 <img src="https://user-images.githubusercontent.com/1330109/125155379-fca34c80-e191-11eb-981f-8fb6e8df9794.png" alt="Dark mode">
 
 ## Credit
-Inspired by this [pull request](https://github.com/codeigniter4/CodeIgniter4/pull/3515)
+- [Highlight.php](https://github.com/scrivo/highlight.php)
+- Inspired by this [pull request](https://github.com/codeigniter4/CodeIgniter4/pull/3515)

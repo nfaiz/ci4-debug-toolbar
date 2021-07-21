@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.3.0](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.3...v1.3.0) - Not Released
+
+### Deprecations
+
+- Deprecated `service('highlighter')` in favor for KISS principle, use utilities from highlight.php instead.
+
 
 ## [v1.2.4](https://github.com/nfaiz/ci4-debug-toolbar/compare/v1.2.3...v1.2.4) - 2021-07-19
 
@@ -24,7 +30,7 @@
 
 ### Enhancement
 
-- New service `service('highlighter')`. See [here](README.md#utilities) for usage.
+- New service `service('highlighter')`. ~~See [here](README.md#utilities) for usage~~.
 
 ### Removed
 
