@@ -22,7 +22,7 @@ E.g Using **app/ThirdParty** directory path:
 ### 2. Install Highlight.php
 Install package via composer:
 
-    composer require scrivo/highlight.php:^v9.18.*
+    composer require scrivo/highlight.php:^v9.18
 
 
 ## Setup
@@ -71,13 +71,7 @@ use Nfaiz\DebugToolbar\Collectors\Database;
      * SQL CSS Theme
      * -------------------------------------------------------------
      * 
-     * Configurations for light and dark mode.
-     * Set CSS theme name WITHOUT css extension. E.g 'github'.
-     * 
-     * To get available CSS themes in controller use
-     *     service('highlighter')->getAvailableStyleSheets(); 
-     * or to get available CSS theme with absolute path use
-     *     service('highlighter')->getAvailableStyleSheets(true);
+     * Configuration for light and dark mode SQL syntax highlighter.
      * 
      * @var array
      */
