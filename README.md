@@ -2,6 +2,10 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/nfaiz/ci4-debug-toolbar?label=size)
 ![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=nfaiz/ci4-debug-toolbar)
 
+
+# Moved to [here](https://github.com/nfaiz/dbtoolbar)
+
+<del>
 # ci4-debug-toolbar
 SQL Syntax Highlighter for CodeIgniter 4 Database Debug Toolbar.
 
@@ -116,3 +120,4 @@ E.g In **Controller**
 ## Credit
 - [Highlight.php](https://github.com/scrivo/highlight.php)
 - Inspired by this [pull request](https://github.com/codeigniter4/CodeIgniter4/pull/3515)
+</del>
