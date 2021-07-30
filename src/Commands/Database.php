@@ -55,14 +55,14 @@ class Database extends BaseCommand
         );
 
         $content = str_replace(
-            service('parser')->render('Nfaiz\DebugToolbar\Views\sqlcsstheme.tpl'), 
+            service('parser')->render('Nfaiz\DebugToolbar\Views\hlconfig.tpl'), 
             '}', 
             $content
         );
 
         $content = str_replace(
             "}", 
-            service('parser')->render('Nfaiz\DebugToolbar\Views\sqlcsstheme.tpl'), 
+            service('parser')->render('Nfaiz\DebugToolbar\Views\hlconfig.tpl'), 
             $content
         );
 

@@ -126,21 +126,11 @@ class Database extends BaseCollector
      */
     public function display()
     {
-        if (class_exists('Highlight\Highlighter') 
-            && class_exists('Nfaiz\DebugToolbar\Utilities\Highlighter'))
+        if (class_exists('Highlight\Highlighter') && class_exists('Nfaiz\DebugToolbar\Database'))
         {
-            $hl = new \Nfaiz\DebugToolbar\Database();
+            $dbToolbar = new \Nfaiz\DebugToolbar\Database(static::$queries);
 
-            $queries = [];
-
-            foreach (static::$queries as $query) {
-                $queries[] = [
-                    'duration' => ((float) $query->getDuration(5) * 1000) . ' ms',
-                    'sql'      => $hl->highlightSql($query->getQuery()),
-                ];
-            }
-
-            return $hl->render($queries);
+            return $dbToolbar->display();
         }
 
         $data['queries'] = array_map(function (Query $query) {
