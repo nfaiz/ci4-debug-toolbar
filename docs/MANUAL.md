@@ -27,9 +27,8 @@ Install package via composer:
 
 ## Setup
 
-In **app/Config** directory<br />
+In **app/Config** directory edit<br />
 
-Modify these php files.
 * [Events](MANUAL.md#1-events)
 * [Toolbar](MANUAL.md#2-toolbar)
 
